@@ -4,3 +4,4 @@ pymongo
 nltk
 numpy
 uvicorn
+dotenv

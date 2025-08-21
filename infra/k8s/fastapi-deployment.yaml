@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: data-loader
-          image: danc12/image_open_mongo_21:v
+          image: danc12/image_open_mongo_21:v5
           ports:
             - containerPort: 8080
           volumes:

@@ -3,8 +3,8 @@ import fetcher
 import json
 
 class Manager:
-    def __init__(self, uri: str = None, db_name: str = "IranMalDB"):
-        self.df = fetcher.MongoDAL().get_records()
+    def __init__(self, uri, db_name):
+        self.df = fetcher.MongoDAL(uri , db_name).get_records()
         self.process = processor.Process(df=self.df)
     def add_and_rename_coloumn(self):
         self.process.add_personal_weapon()

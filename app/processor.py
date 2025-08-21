@@ -9,7 +9,7 @@ class Process:
         self.df = df
         self.list_weapon = self.get_list_weapon("../data/weapon_list.txt")
     def add_most_common_word_colomn(self):
-        self.df["rarest_word"] = self.df['Text'].transform(lambda x : self.get_most_common_word(text=x ))
+        self.df["rarest_word"] = self.df['Text'].transform(lambda x : self.get_rarest_word_word(text=x ))
 
     def add_emotion_of_text_colomn(self):
         self.df['sentiment'] = self.df['Text'].transform(lambda x : self.find_emotion_of_text(x))
@@ -21,7 +21,7 @@ class Process:
         self.df.rename({name_to_change:name_to_be_changed} , axis = 1 , inplace=True)
 
     @staticmethod
-    def get_most_common_word(text):
+    def get_rarest_word_word(text):
         split_text = text.split()
         d = {}
         for element in split_text:
@@ -29,7 +29,7 @@ class Process:
                 d[element] += 1
             else:
                 d[element] = 1
-        max_word = max(d, key=d.get)
+        max_word = min(d, key=d.get)
         return max_word
 
 
