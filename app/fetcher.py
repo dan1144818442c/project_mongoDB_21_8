@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import pandas as pd
-import os
 
 class MongoDAL:
     def __init__(self, uri: str = None, db_name: str = "IranMalDB"):
@@ -25,6 +24,9 @@ class MongoDAL:
         for d in docs:
             d["_id"] = str(d["_id"])
         return pd.DataFrame(docs)
+
+
+
 
     # def insert_record(self, record: dict):
     #     """הוספת מסמך חדש"""

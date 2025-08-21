@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-loader-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-loader
+  template:
+    metadata:
+      labels:
+        app: data-loader
+    spec:
+      containers:
+        - name: data-loader
+          image: danc12/image_open_mongo_21:v
+          ports:
+            - containerPort: 8080
+          volumes:
+            - name: mongodb-persistent-storage
+              persistentVolumeClaim:
+                claimName: data-loader-pvc
